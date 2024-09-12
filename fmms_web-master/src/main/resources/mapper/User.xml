@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fmms.mapper.UserMapper">
+
+    <!--<select id="get_By_UsernameAndPassword" resultType="com.example.fmms.entify.User">
+        select from users(uname,uaccount, upassword)where
+        values(#{name}, #{username}, #{age}, #{sex}, #{phone}, #{address}, #{account})
+    </select>
+    -->
+    <!--记得把uname设置为主键-->
+    <insert id="regin" >
+        insert  into users(uname,uaccount, upassword)
+        values(#{uname}, #{uaccount}, #{upassword})
+    </insert>
+    <update id="update_byuname" >
+        update  users set uname=#{uname},uaccount=#{uaccount},upassword=#{upassword} where uname=#{uname}
+    </update>
+    <delete id="delete_byuname">
+        delete from users where uname=#{uname}
+    </delete>
+    <select id="enquiry_byuname" resultType="com.example.fmms.entify.User">
+        select * from users where uname=#{uanme}
+
+    </select>
+    <select id="get_By_UserNameAndPassword" resultType="com.example.fmms.entify.User">
+        select * from users where uname=#{username} and upassword=#{password}
+    </select>
+</mapper>

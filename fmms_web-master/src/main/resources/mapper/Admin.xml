@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.fmms.mapper.AdminMapper">
+
+<!--数据库的密码好像打错了，打成了mgpasssword
+   记得把mgname设置为主键-->
+    <insert id="regin" >
+        insert  into administrators(mgname,mgaccount,mgpasssword)
+        values(#{mgname}, #{mgaccount}, #{mgpassword})
+    </insert>
+    <update id="update_bymgname" >
+        update  administrators set mgname=#{mgname},mgaccount=#{mgaccount},mgpasssword=#{mgpassword} where mgname=#{mgname}
+    </update>
+    <delete id="delete_bymgname">
+        delete from administrators where mgname=#{mgname}
+    </delete>
+    <select id="enquiry_bymgname" resultType="com.example.fmms.entify.Admin">
+        select * from administrators where mgname=#{mganme}
+
+    </select>
+    <select id="get_By_AdminNameAndPassword" resultType="com.example.fmms.entify.Admin">
+        select * from administrators where mgname=#{username} and mgpasssword=#{password}
+    </select>
+</mapper>
